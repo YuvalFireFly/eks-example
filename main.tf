@@ -13,6 +13,15 @@ resource "aws_vpc" "custom_vpc" {
   }
 }
 
+resource "aws_vpc" "custom_vpc2" {
+  cidr_block = var.vpc_cidr_block
+
+  tags = {
+    Name = var.vpc_name
+  }
+}
+
+
 # PUBLIC SUBNETS
 resource "aws_subnet" "public_subnets" {
   count                   = var.public_subnets == null ? 0 : length(var.public_subnets)
